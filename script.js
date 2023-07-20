@@ -2,6 +2,7 @@ const gameCells = document.querySelectorAll('.cell');
 const player1 = document.querySelector('.player1');
 const player2 = document.querySelector('.player2');
 const restartBtn = document.querySelector('.restartBtn');
+const alertBox = document.querySelector('.alertBox');
 
 
 // Making variables
@@ -9,30 +10,38 @@ let currentPlayer = 'X';
 let nextPlayer = 'O';
 let playerTurn = currentPlayer;
 
+player1.textContent = `Player 1: ${currentPlayer}`;
+player2.textContent = `Player 2: ${nextPlayer}`;
+
 // Function to start the game
-
-
 const startGame = () =>{
     gameCells.forEach(cell => {
-        cell.addEventListener('click', (e) =>{
-            if(e.target.textContent == ''){
-            e.target.textContent = playerTurn;
-            if(checkWin()){
-                console.log(`${playerTurn} is a Winner.`);
-            }
-            else if(checkTie()){
-                console.log(`It's a tie`);
-            }
-            else{
-                changePlayerTurn();
-            }    
-            
-          
-            }
-        })
+        cell.addEventListener('click', handleClick);
     })
 }
 
+// Function to handle the click
+const handleClick = (e) =>{
+    if(e.target.textContent == ''){
+        e.target.textContent = playerTurn;
+        if(checkWin()){
+            // console.log(`${playerTurn} is a Winner.`);
+            showAlert(`${playerTurn} is a Winner!`);
+            disbaleCells();
+        }
+        else if(checkTie()){
+            // console.log(`It's a tie`);
+            showAlert(`It's a Tie!`)
+            disbaleCells();
+        }
+        else{
+            changePlayerTurn();
+            showAlert(`Turn for player: ${playerTurn}`)
+        }    
+        
+      
+    }
+}
 
 // Function to change player
 const changePlayerTurn = ()=>{
@@ -81,6 +90,36 @@ const checkTie = ()=>{
 
     return emptycellsCount === 0 && !checkWin();
 }
+
+// function to disable game-board after a win or tie
+const disbaleCells = ()=>{
+    gameCells.forEach(cell =>{
+       cell.removeEventListener('click',handleClick);
+       cell.classList.add('disabled');
+
+    });
+}
+
+const restartGame = ()=>{
+    gameCells.forEach(cell =>{
+      cell.textContent = '';
+      cell.classList.remove('disabled');
+    });
+    startGame();
+}
+
+//  functionn to show alert
+const showAlert = (msg) =>{
+    alertBox.style.display = "block";
+    alertBox.textContent = msg;
+    setTimeout(()=>{
+          alertBox.style.display = "none";
+
+    },5000)
+}
+
+// Adding event listner to restart button
+restartBtn.addEventListener('click', restartGame);
 
 
 // Calling start game function
