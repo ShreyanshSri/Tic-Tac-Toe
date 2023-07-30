@@ -1,10 +1,10 @@
 # Tic-Tac-Toe
 Title: Tic Tac Toe Web Project
 
-Overview:
+# Overview:
 The Tic Tac Toe web project is a classic two-player game that allows users to play the popular game of Tic Tac Toe directly in their web browsers. The project is built using HTML, CSS, and JavaScript, making it lightweight, interactive, and easy to play.
 
-Features:
+# Features:
 
 Game Board: The project presents a 3x3 grid representing the Tic Tac Toe board. Each cell of the grid represents a possible move.
 
@@ -18,7 +18,7 @@ Draw Condition: If all the cells are filled, and there is no winner, the game is
 
 Reset: The game provides an option to reset the board to play another round.
 
-Frontend (HTML/CSS/JavaScript):
+# Frontend (HTML/CSS/JavaScript):
 
 HTML Structure: The HTML file contains the structure of the game board using a table or a series of div elements. Each cell is given a unique identifier to track its state.
 
@@ -27,12 +27,16 @@ CSS Styling: The CSS file is responsible for styling the game board, including c
 JavaScript Logic:
 
 Game Initialization: The JavaScript code initializes the game board and variables required to track the game's state.
+
 Click Event Handlers: Event listeners are added to each cell of the board to capture player clicks. When a player clicks a cell, the corresponding JavaScript function is called to handle the move.
+
 Move Handling: The JavaScript code manages the placement of "X" or "O" symbols on the board, updating the board's state after each move.
 Win and Draw Detection: After each move, the code checks for a win condition or a draw. If either condition is met, the game declares the result.
+
 Player Switching: The JavaScript code handles switching between Player 1 and Player 2 turns.
 Reset Function: A function is provided to reset the game board, allowing players to play again.
 Deployment:
+
 The Tic Tac Toe web project can be hosted on any web server or cloud platform that supports static website hosting, such as GitHub Pages or Netlify. Users can access the game by visiting the project's URL in their web browsers.
 
 Conclusion:
